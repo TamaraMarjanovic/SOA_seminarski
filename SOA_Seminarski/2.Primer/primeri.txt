@@ -1,5 +1,0 @@
-//I am Tamara. This is my friend Stefan. We are the best team in the world!
-//Ja sam Tamara. Ovo je moj drug Stefan. Mi smo najbolji tim na svetu!
-//Ich bin Tamara. Das ist mein Freund Stefan. Wir sind das beste Team der Welt!
-//Je suis Tamara. Voici mon ami Stefan. Nous sommes la meilleure équipe du monde!
-//Ben Tamara. Bu arkadaşım Stefan. Dünyanın en iyi takımıyız!
