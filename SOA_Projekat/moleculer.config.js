@@ -3,6 +3,7 @@ const os = require("os");
 
 module.exports = {
     nodeID: (process.env.NODEID ? process.env.NODEID + "-" : "") + os.hostname().toLowerCase(),
+    transporter: null // "MQTT"
     // metrics: true
     // cacher: true
 };

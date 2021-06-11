@@ -27,7 +27,10 @@ module.exports = {
 				data: { type: "object" }
 			},
 			async handler(ctx){
+				// POST
 				const result = await this.adapter.insert(ctx.params.data);
+				// Publish to topic data-analytics
+				this.broker.emit("analytics.getData",ctx.params.data,["data-analytics"])
 				return result;
 			}
 		},
@@ -43,28 +46,22 @@ module.exports = {
 				query: {}
 				 };
 				 if(ctx.params.yr){
-					 params.query["yr"]=ctx.params.yr.toString();
+					 params.query["yr"]=parseInt(ctx.params.yr);
 				 }
-				 if(ctx.params.mo){
-					params.query["mo"]=ctx.params.mo.toString();
-				}
-				if(ctx.params.dy){
-					params.query["dy"]=ctx.params.dy.toString();
-				}
 				if(ctx.params.st){
 					params.query["st"]=ctx.params.st.toString();
 				}
 				if(ctx.params.mag){
-					params.query["mag"]=ctx.params.mag.toString();
+					params.query["mag"]=ctx.params.mag;
 				}
 				if(ctx.params.inj){
-					params.query["inj"]={ $gt: ctx.params.inj };
+					params.query["inj"]={ $gt: parseInt(ctx.params.inj) };
 				}
 				if(ctx.params.fat){
-					params.query["fat"]={ $gt: ctx.params.fat };
+					params.query["fat"]={ $gt: parseInt(ctx.params.fat) };
 				}
 				if(ctx.params.loss){
-					params.query["loss"]={ $gt: ctx.params.loss };
+					params.query["loss"]=parseInt(ctx.params.loss) ;
 				}
 				const result=await this.adapter.find(params);
 				return result;
